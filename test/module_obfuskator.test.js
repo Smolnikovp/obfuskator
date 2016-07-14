@@ -1,8 +1,7 @@
-var module = require('../module.js'),
+var module = require('../module_obfuskator.js'),
     assert = require('chai').assert;
 
-
-describe('модуль', function() {
+describe('Обфускатор', function() {
     var data,
         expect;
 
@@ -26,13 +25,13 @@ describe('модуль', function() {
             class7: 'aaa'
         };
 
-        assert.deepEqual(module(data, ['a','b']), expect);
+        assert.deepEqual(module(data, ['a', 'b']), expect);
     });
 
     it ('должен фильтровать классы с недопустимыми именами', function() {
         data = ['1class', 'class2', 'class3', 'clas__s4'];
-        expect = { class2: 'a', class3: 'b', clas__s4: 'aa'};
+        expect = { class2: 'a', class3: 'b', clas__s4: 'c'};
 
-        assert.deepEqual(module(data, ['a', 'b']), expect);
+        assert.deepEqual(module(data), expect);
     });
 });

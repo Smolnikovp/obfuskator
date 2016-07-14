@@ -1,7 +1,12 @@
 module.exports = function(data, userDict){
     var hash = [],
         rtn = {},
-        dict = userDict || 'abcd'.split('');
+        dict = 'abcdefghijklmnopqrstuvwxyz';
+
+    dict += dict.toUpperCase();
+    dict.split('');
+
+    dict = userDict || dict;
 
     data.forEach(function(v) {
         if (!v.match(/^[a-zA-Z][a-zA-Z0-9-_]+/) || rtn[v]) {
@@ -29,5 +34,6 @@ module.exports = function(data, userDict){
             return dict[v];
         }).join('');
     });
+
     return rtn;
 };
